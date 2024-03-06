@@ -1,79 +1,20 @@
 import React, { useState } from 'react';
 import "./login.css";
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  signInStart,
-  signInSuccess,
-  signInFailure,
-} from '../../redux/user/userSlice';
+import { Link } from "react-router-dom";
+
 
 function Logins() {
     // State untuk mengontrol kelas-kelas pada container
     const [isRightPanelActive, setIsRightPanelActive] = useState(false);
 
-    const [formData, setFormData] = useState({});
-    const { loading, error } = useSelector((state) => state.user);
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const handleChange = (e) => {
-      setFormData({
-        ...formData,
-        [e.target.id]: e.target.value,
-      });
-    };
-    
     // Handler untuk mengaktifkan panel kanan
-    const handleSignUpClick = async (e) => {
+    const handleSignUpClick = () => {
         setIsRightPanelActive(true);
-        setIsRightPanelActive(false);
-        e.preventDefault();
-        try {
-          dispatch(signInStart());
-          const res = await fetch('http://localhost:3000/api/auth/signup', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          });
-          const data = await res.json();
-          console.log(data);
-          if (data.success === false) {
-            dispatch(signInFailure(data.message));
-            return;
-          }
-          dispatch(signInSuccess(data));
-          navigate('/');
-        } catch (error) {
-          dispatch(signInFailure(error.message));
-        }
     };
 
     // Handler untuk menonaktifkan panel kanan
-    const handleSignInClick = async (e) => {
+    const handleSignInClick = () => {
         setIsRightPanelActive(false);
-        e.preventDefault();
-        try {
-          dispatch(signInStart());
-          const res = await fetch('http://localhost:3000/api/auth/signin', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          });
-          const data = await res.json();
-          console.log(data);
-          if (data.success === false) {
-            dispatch(signInFailure(data.message));
-            return;
-          }
-          dispatch(signInSuccess(data));
-          navigate('/');
-        } catch (error) {
-          dispatch(signInFailure(error.message));
-        }
     };
 
     return (
@@ -84,10 +25,10 @@ function Logins() {
                     <h1>Create Account</h1>
                     <div className="social-container">
                         <a href="#" className="social"> <svg fill="none" viewBox="0 0 24 24" height="1em" width="1em" >
-                        <path
-                          fill="currentColor"
-                          d="M9.198 21.5h4v-8.01h3.604l.396-3.98h-4V7.5a1 1 0 011-1h3v-4h-3a5 5 0 00-5 5v2.01h-2l-.396 3.98h2.396v8.01z"
-                        />
+      <path
+        fill="currentColor"
+        d="M9.198 21.5h4v-8.01h3.604l.396-3.98h-4V7.5a1 1 0 011-1h3v-4h-3a5 5 0 00-5 5v2.01h-2l-.396 3.98h2.396v8.01z"
+      />
     </svg></a>
                         <a href="#" className="social"><svg fill="none" viewBox="0 0 24 24" height="1em" width="1em" >
       <path
@@ -105,14 +46,14 @@ function Logins() {
     </svg></a>
                     </div>
                     <span>or use your email for registration</span>
-                    <input id='username' type="text" placeholder="Name" />
-                    <input id='email' type="email" placeholder="Email" />
-                    <input id='password' type="password" placeholder="Password" />
+                    <input type="text" placeholder="Name" />
+                    <input type="email" placeholder="Email" />
+                    <input type="password" placeholder="Password" />
                     <Link to="/home" className='Sign'>Sign In</Link>
                 </form>
             </div>
             <div className="form-container sign-in-container">
-                <form aonSubmit={handleSubmit}>
+                <form action="#">
                     <h1>Log In</h1>
                     <div className="social-container">
                         <a href="#" className="social"> <svg fill="none" viewBox="0 0 24 24" height="1em" width="1em" >
@@ -137,8 +78,8 @@ function Logins() {
     </svg></a>
                     </div>
                     <span>or use your account</span>
-                    <input id="email" onChange={handleChange} type="email" placeholder="Email" />
-                    <input id="password" onChange={handleChange} type="password" placeholder="Password" />
+                    <input type="email" placeholder="Email" />
+                    <input type="password" placeholder="Password" />
                     <a href="#">Forgot your password?</a>
                     <Link to="/home" className='Sign'>Log In</Link>
                 </form>
