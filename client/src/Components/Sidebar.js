@@ -3,7 +3,6 @@ import "./Styles/sidebar.css";
 import axios from "axios";
 import { SidebarData } from "./SidebarData";
 import { NavLink } from "react-router-dom";
-import logo from "../Assets/Images/logo.png";
 import { AuthLoginInfo } from "./../AuthComponents/AuthLogin";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";

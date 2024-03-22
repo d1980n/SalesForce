@@ -17,6 +17,11 @@ export const SidebarData = [
     link: "/orders"
   },
   {
+    title: "Retrun Orders",
+    icon: <ContentPasteRoundedIcon />,
+    link: "/returnorders"
+  },
+  {
     title: "Clients",
     icon: <PeopleOutlineRoundedIcon />,
     link: "/clients"

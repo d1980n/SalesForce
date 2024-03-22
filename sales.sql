@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `one-place`
+-- Database: `sales`
 --
 
 -- --------------------------------------------------------
@@ -40,7 +40,7 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `username`, `password`, `role`, `dateCreated`) VALUES
-(1, 'admin', '$2b$10$J1JTnk4KtLylMznNjWlRsOKPvsDEYDX.xyP77EY/Gq1JpccSnr3qa', 'admin', '2022-10-25');
+(1, 'admin', '$2b$10$CUZ4/RBWOIFesBZje/5xoez1XGJDahMq6DLmG6cqJULgGo3Y.k8c.', 'admin', '2024-03-22');
 
 -- --------------------------------------------------------
 

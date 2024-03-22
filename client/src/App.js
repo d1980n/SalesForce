@@ -4,6 +4,7 @@ import Homepage from './Pages/Homepage';
 import Login from './Pages/Login';
 import Orders from './Pages/Orders';
 import OrderPage from './Pages/OrderPage';
+import ReturnOrder from './Pages/ReturnOrder';
 import Clients from './Pages/Clients';
 import ClientPage from './Pages/ClientPage';
 import CalendarEvents from './Pages/CalendarEvents';
@@ -30,6 +31,11 @@ function App() {
                   </PrivateRoute>
                 } />
               <Route path='/orders' element={
+                    <PrivateRoute>
+                      <Orders />
+                    </PrivateRoute>
+                  } />
+                <Route path='/returnorders' element={
                     <PrivateRoute>
                       <Orders />
                     </PrivateRoute>
